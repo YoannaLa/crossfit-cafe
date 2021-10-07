@@ -32,7 +32,9 @@ def validate_data(values):
     ErrorMessage if strings cannot be trun to int,
     or less or more than 6 values. 
     """
+    print(values)
     try:
+        [int(value) for value in values]
         if len(values) !=6:
             raise ValueError(
                 f'6 numbers required, you provided {len(values)}'
