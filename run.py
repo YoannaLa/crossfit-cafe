@@ -65,6 +65,16 @@ def update_sales_worksheet(data):
     print('Sales worksheet updated!.\n')
 
 
+def update_surplus_worksheet(data):
+    """
+    Update surplus worksheet, add new row with list data provided
+    """
+    print('Surplus numbers updating...\n')
+    surplus_worksheet = SHEET.worksheet('surplus')
+    surplus_worksheet.append_row(data)
+    print('Surplus worksheet updated!.\n')
+
+
 def calculating_surplus_data(sales_row):
     """
     Compare sales with stock and work out the surplus for each shake.
@@ -75,7 +85,6 @@ def calculating_surplus_data(sales_row):
     print("Working out the surplus numbers.\n")
     stock = SHEET.worksheet('stock').get_all_values()
     stock_row = stock[-1]
-    
 
     surplus_data =[]
     for stock, sales in zip(stock_row, sales_row):
@@ -83,6 +92,21 @@ def calculating_surplus_data(sales_row):
         surplus_data.append(surplus)
     
     return surplus_data
+
+
+def get_last_4_weeks_sales():
+    """ 
+    Collect sales of each shake from last 4 weeks,
+    data per collumn, and return the data as a list of lists.
+    """
+    sales = SHEET.worksheet('sales')
+
+    columns = []
+    for ind in range(1, 7):
+        column = sales.col_values(ind)
+        columns.append(column[-4:])
+    
+    return columns
 
 
 def main():
@@ -93,8 +117,10 @@ def main():
     sales_data = [int(num) for num in data]
     update_sales_worksheet(sales_data)
     new_surplus_data = calculating_surplus_data(sales_data)
-    print(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data)
 
 
 print('Welcome to CrossFit Cafe data collection.')
-main()
+# main()
+
+sales_columns = get_last_4_weeks_sales()
