@@ -54,28 +54,18 @@ def validate_data(values):
 
     return True
 
-
-def update_sales_worksheet(data):
+def update_worksheet(data, worksheet):
     """
-    Update sales worksheet, add new row with list data provided
+    Receives a list of integers to be inserted into a worksheet
+    Update the relevant worksheet with the data provided
     """
-    print('Sales numbers updating...\n')
-    sales_worksheet = SHEET.worksheet('sales')
-    sales_worksheet.append_row(data)
-    print('Sales worksheet updated!.\n')
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+    print(f"{worksheet} worksheet updated successfully\n")
 
 
-def update_surplus_worksheet(data):
-    """
-    Update surplus worksheet, add new row with list data provided
-    """
-    print('Surplus numbers updating...\n')
-    surplus_worksheet = SHEET.worksheet('surplus')
-    surplus_worksheet.append_row(data)
-    print('Surplus worksheet updated!.\n')
-
-
-def calculating_surplus_data(sales_row):
+def calculate_surplus_data(sales_row):
     """
     Compare sales with stock and work out the surplus for each shake.
     The surplus is a differents between sales and stock:
@@ -109,18 +99,37 @@ def get_last_4_weeks_sales():
     return columns
 
 
+def calculate_stock_data(data):
+    """
+    Average stock for each shake, adding 15%
+    """
+    print('Calculating stock data...\n')
+    new_stock_data = []
+
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column) / len(int_column)
+        stock_num = average * 1.5
+        new_stock_data.append(round(stock_num))
+
+    return new_stock_data
+    
+    
 def main():
     """
     Run all program functions
     """
     data = get_sales_data()
     sales_data = [int(num) for num in data]
-    update_sales_worksheet(sales_data)
-    new_surplus_data = calculating_surplus_data(sales_data)
-    update_surplus_worksheet(new_surplus_data)
+    update_worksheet(sales_data, "sales")
+    new_surplus_data = calculate_surplus_data(sales_data)
+    update_worksheet(new_surplus_data, "surplus")
+    sales_columns = get_last_4_weeks_sales()
+    stock_data = calculate_stock_data(sales_columns)
+    update_worksheet(stock_data, "stock")
+    print(stock_data)
 
 
 print('Welcome to CrossFit Cafe data collection.')
-# main()
+main()
 
-sales_columns = get_last_4_weeks_sales()
