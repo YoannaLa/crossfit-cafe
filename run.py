@@ -22,7 +22,7 @@ def get_sales_data():
         print("Six numbers as each shakes types, separated by commas.")
         print("Example: 5,11,8,6,9,2\n")
 
-        data_str = input("Enter your sales numbers here:\n")
+        data_str = input("Enter your sales numbers here: \n")
 
         sales_data = data_str.split(",")
         validate_data(sales_data)
@@ -61,7 +61,7 @@ def update_worksheet(data, worksheet):
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
     worksheet_to_update.append_row(data)
-    print(f"{worksheet} worksheet updated successfully\n")
+    print(f"{worksheet} Worksheet updated successfully!!\n")
 
 
 def calculate_surplus_data(sales_row):
@@ -71,7 +71,7 @@ def calculate_surplus_data(sales_row):
      - Positive number shows waste
      - Negative number shows shakes made as customer waits as stock sold out.
     """
-    print("Working out the surplus numbers.\n")
+    print("Working out the surplus numbers...\n")
     stock = SHEET.worksheet('stock').get_all_values()
     stock_row = stock[-1]
 
