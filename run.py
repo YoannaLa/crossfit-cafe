@@ -15,12 +15,13 @@ SHEET = GSPREAD_CLIENT.open('cross_fit_cafe_shakes')
 
 def get_sales_data():
     """
-    Get sales figures input from the user
+    Get sales figures input from the user, while statment added so the
+    programme keeps asking for the right data
     """
     while True:
         print("Please enter sales numbers from last Sunday.")
-        print("Six numbers as each shakes types, separated by commas.")
-        print("Example: 5,11,8,6,9,2\n")
+        print("Five numbers as each shakes types, separated by commas.")
+        print("Example: 5,11,8,6,9,\n")
 
         data_str = input("Enter your sales numbers here:\n")
 
@@ -43,9 +44,9 @@ def validate_data(values):
     print(values)
     try:
         [int(value) for value in values]
-        if len(values) !=6:
+        if len(values) !=5:
             raise ValueError(
-                f'6 numbers required, you provided {len(values)}'
+                f'5 numbers required, you provided {len(values)}'
             )
     except ValueError as e:
         print(f'Invalid data: {e}, please try again.\n')
@@ -72,7 +73,7 @@ def calculate_surplus_data(sales_row):
      - Negative number shows shakes made as customer waits as stock sold out.
     """
     print("Working out the surplus numbers...\n")
-    stock = SHEET.worksheet('stock').get_all_values()
+    stock = SHEET.worksheet('Stock').get_all_values()
     stock_row = stock[-1]
 
     surplus_data =[]
@@ -88,10 +89,10 @@ def get_last_4_weeks_sales():
     Collect sales of each shake from last 4 weeks,
     data per collumn, and return the data as a list of lists.
     """
-    sales = SHEET.worksheet('sales')
+    sales = SHEET.worksheet('Sales')
 
     columns = []
-    for ind in range(1, 7):
+    for ind in range(1, 6):
         column = sales.col_values(ind)
         columns.append(column[-4:])
     
@@ -102,6 +103,7 @@ def calculate_stock_data(data):
     """
     Average stock for each shake, adding 15%
     """
+    sales = SHEET.worksheet('Sales')
     print('Calculating stock data...\n')
     new_stock_data = []
 
@@ -112,25 +114,31 @@ def calculate_stock_data(data):
         new_stock_data.append(round(stock_num))
 
     return new_stock_data
-    
-    
-def next_week_
 
+
+def get_stock_data(data):
+    """
+    The next week shake numbers prediction
+    """
+    sales = SHEET.worksheet('Sales')
+    print('Shakes for next week sales are:\n')
+    get_stock_data = []
+
+       
 def main():
     """
     Run all program functions
     """
     data = get_sales_data()
     sales_data = [int(num) for num in data]
-    update_worksheet(sales_data, "sales")
+    update_worksheet(sales_data, "Sales")
     new_surplus_data = calculate_surplus_data(sales_data)
-    update_worksheet(new_surplus_data, "surplus")
+    update_worksheet(new_surplus_data, "Surplus")
     sales_columns = get_last_4_weeks_sales()
     stock_data = calculate_stock_data(sales_columns)
-    update_worksheet(stock_data, "stock")
-    print(stock_data)
+    update_worksheet(stock_data, "Stock")
 
-
+   
 print('Welcome to CrossFit Cafe data collection.')
 main()
 
