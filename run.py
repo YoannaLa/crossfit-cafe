@@ -41,10 +41,10 @@ def validate_data(values):
     ErrorMessage if strings cannot be trun to int,
     or less or more than 6 values. 
     """
-    print(values)
+   
     try:
         [int(value) for value in values]
-        if len(values) !=5:
+        if len(values) != 5:
             raise ValueError(
                 f'5 numbers required, you provided {len(values)}'
             )
@@ -53,6 +53,7 @@ def validate_data(values):
         return False
 
     return True
+
 
 def update_worksheet(data, worksheet):
     """
@@ -76,7 +77,7 @@ def calculate_surplus_data(sales_row):
     stock = SHEET.worksheet('Stock').get_all_values()
     stock_row = stock[-1]
 
-    surplus_data =[]
+    surplus_data = []
     for stock, sales in zip(stock_row, sales_row):
         surplus = int(stock) - sales
         surplus_data.append(surplus)
@@ -106,15 +107,16 @@ def calculate_stock_data(data):
     sales = SHEET.worksheet('Sales')
     print('Calculating stock data...\n')
     new_stock_data = []
-
+    
     for column in data:
         int_column = [int(num) for num in column]
         average = sum(int_column) / len(int_column)
         stock_num = average * 1.5
         new_stock_data.append(round(stock_num))
+    
+    print('Next week Shakes', new_stock_data)
 
     return new_stock_data
-
 
 def get_stock_data(data):
     """
@@ -124,7 +126,10 @@ def get_stock_data(data):
     print('Shakes for next week sales are:\n')
     get_stock_data = []
 
-       
+    for value in spreadsheet.iter_rows(row=1, values_only=True):
+        headings = sales(row)
+    print(value)
+
 def main():
     """
     Run all program functions
@@ -138,7 +143,7 @@ def main():
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "Stock")
 
-   
+
 print('Welcome to CrossFit Cafe data collection.')
 main()
 
