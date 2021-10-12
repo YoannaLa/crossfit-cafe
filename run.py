@@ -120,7 +120,7 @@ def get_stock_values(data):
     """
     Using the stock data to predict the numbers of shakes to be prepared
     """
-    print('The numbers of shakes to be prepared for next week are:/n')
+    print('The numbers of shakes to be prepared for next week are:\n')
     stock = SHEET.worksheet("Stock").get_all_values()
     headings = stock[0]
     stock_row = stock[-1]
@@ -128,7 +128,6 @@ def get_stock_values(data):
     stock_value =[]
     for stock in zip(headings, stock_row):
         stock_value.append(stock)
-
     #stock_value = new_stock_data
     print(stock_value)
 
