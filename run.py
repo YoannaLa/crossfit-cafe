@@ -39,9 +39,8 @@ def validate_data(values):
     """
     To convert all string values into integers (int).
     ErrorMessage if strings cannot be trun to int,
-    or less or more than 6 values. 
+    or less or more than 6 values.
     """
-   
     try:
         [int(value) for value in values]
         if len(values) != 5:
@@ -114,22 +113,18 @@ def calculate_stock_data(data):
         stock_num = average * 1.5
         new_stock_data.append(round(stock_num))
     
-    print('Next week Shakes', new_stock_data)
-
     return new_stock_data
 
-def get_stock_data(data):
+def get_stock_values(data):
     """
-    The next week shake numbers prediction
+    Using the stock data to predict the numbers of shakes to be prepared
     """
-    sales = SHEET.worksheet('Sales')
-    print('Shakes for next week sales are:\n')
-    get_stock_data = []
+    print('The numbers of shakes to be prepared for next week are:/n')
+    stock = SHEET.worksheet("Stock").get_all_values()
+    headings = stock[0]
+    print(headings, new_stock_data)
 
-    for value in spreadsheet.iter_rows(row=1, values_only=True):
-        headings = sales(row)
-    print(value)
-
+    
 def main():
     """
     Run all program functions
@@ -142,7 +137,7 @@ def main():
     sales_columns = get_last_4_weeks_sales()
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "Stock")
-
+    get_stock_values(data)
 
 print('Welcome to CrossFit Cafe data collection.')
 main()
