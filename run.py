@@ -12,7 +12,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('cross_fit_cafe_shakes')
 
-
 def get_sales_data():
     """
     Get sales figures input from the user, while statment added so the
@@ -34,12 +33,11 @@ def get_sales_data():
 
     return sales_data
 
-
 def validate_data(values):
     """
     To convert all string values into integers (int).
     ErrorMessage if strings cannot be trun to int,
-    or less or more than 6 values.
+    or less or more than 6 values. 
     """
     try:
         [int(value) for value in values]
@@ -53,7 +51,6 @@ def validate_data(values):
 
     return True
 
-
 def update_worksheet(data, worksheet):
     """
     Receives a list of integers to be inserted into a worksheet
@@ -63,7 +60,6 @@ def update_worksheet(data, worksheet):
     worksheet_to_update = SHEET.worksheet(worksheet)
     worksheet_to_update.append_row(data)
     print(f"{worksheet} Worksheet updated successfully!!\n")
-
 
 def calculate_surplus_data(sales_row):
     """
@@ -83,7 +79,6 @@ def calculate_surplus_data(sales_row):
     
     return surplus_data
 
-
 def get_last_4_weeks_sales():
     """ 
     Collect sales of each shake from last 4 weeks,
@@ -98,7 +93,6 @@ def get_last_4_weeks_sales():
     
     return columns
 
-
 def calculate_stock_data(data):
     """
     Average stock for each shake, adding 15%
@@ -106,32 +100,34 @@ def calculate_stock_data(data):
     sales = SHEET.worksheet('Sales')
     print('Calculating stock data...\n')
     new_stock_data = []
-    
+
     for column in data:
         int_column = [int(num) for num in column]
         average = sum(int_column) / len(int_column)
         stock_num = average * 1.5
         new_stock_data.append(round(stock_num))
-    
+
     return new_stock_data
 
-
-def get_stock_values(data):
+def get_stock_value(data):
     """
-    Using the stock data to predict the numbers of shakes to be prepared
+    The next week shake numbers prediction
     """
-    print('The numbers of shakes to be prepared for next week are:\n')
-    stock = SHEET.worksheet("Stock").get_all_values()
+    stock = SHEET.worksheet('Stock').get_all_values()
+    print('The stock for next week is :\n')
+    
     headings = stock[0]
     stock_row = stock[-1]
 
-    stock_value =[]
+    stock_value = []
     for stock in zip(headings, stock_row):
         stock_value.append(stock)
-    #stock_value = new_stock_data
-    print(stock_value)
+        
+    for shakes_name, new_stock_value in zip(headings, stock_row):
+        print(f'Shake name: {shakes_name}, number to prepare for next week: {new_stock_value}\n')
 
-    
+    #return stock_value
+       
 def main():
     """
     Run all program functions
@@ -144,8 +140,7 @@ def main():
     sales_columns = get_last_4_weeks_sales()
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "Stock")
-    get_stock_values(data)
+    get_stock_value(data)
 
 print('Welcome to CrossFit Cafe data collection.')
 main()
-
