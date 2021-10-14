@@ -92,7 +92,7 @@ def get_last_4_weeks_sales():
         columns.append(column[-4:])
     
     return columns
-
+    
 def calculate_stock_data(data):
     """
     Average stock for each shake, adding 15%
@@ -124,7 +124,7 @@ def get_stock_value(data):
         stock_value.append(stock)
         
     for shakes_name, new_stock_value in zip(headings, stock_row):
-        print(f'Shake name: {shakes_name}, number to prepare for next week: {new_stock_value}\n')
+        print(f'Shake name: {shakes_name.upper()}, number to prepare: {new_stock_value}\n')
 
     #return stock_value
        
