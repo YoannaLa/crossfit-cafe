@@ -130,17 +130,17 @@ def most_selling_product_last_4_weeks():
     results = 'Max 4 weeks Sales: \n Detox %i \n Cleanse %i \n Protein %s \n Cherry twist %i \n Green twist %i' % (detox_max, cleanser_max, protein_max, cherry_twist_max, green_max)
  
     if (max_value == detox_max):
-        print('Detox is the most poluar shake with: %i sold' % max_value)
+        print('Detox is the most popular shake with: %i sold' % max_value)
     if (max_value == cleanser_max):
-        print('Cleanser is the most poluar shake with: %i sold' % max_value)
+        print('Cleanser is the most popular  shake with: %i sold' % max_value)
     if (max_value == protein_max):
-        print('Protein is the most poluar shake with: %i sold' % max_value)
+        print('Protein is the most popular  shake with: %i sold' % max_value)
     if (max_value == cherry_twist_max):
-        print('Cherry Twist is the most poluar shake with: %i sold' % max_value)
+        print('Cherry Twist is the most popular  shake with: %i sold' % max_value)
     if (max_value == green_max):
-        print('Green is the most popluar shake this month with: %i sold' % max_value)
-        return results
-
+        print('Green is the most popular  shake this month with: %i sold' % max_value)
+  
+    return most_selling_product_last_4_weeks
 
 def calculate_stock_data(data):
     """
@@ -164,7 +164,7 @@ def get_stock_value(data):
     The next week shake numbers prediction
     """
     stock = SHEET.worksheet('Stock').get_all_values()
-    print('Numbers for next week:\n')
+    print('Numbers to prepare for next week:\n')
     
     headings = stock[0]
     stock_row = stock[-1]
