@@ -111,7 +111,7 @@ def most_selling_product_last_4_weeks():
     protein_max = get_max_value_from_list(protein_column_last_4_weeks)
     cherry_twist_max = get_max_value_from_list(cherry_twist_column_last_4_weeks)
     green_max = get_max_value_from_list(green_column_last_4_weeks)
-
+   
     max_value_list = [detox_max, cleanser_max, protein_max, cherry_twist_max, green_max]
     max_value = get_max_value_from_list(max_value_list)
 

@@ -2,13 +2,13 @@
 
 Table of Contents
 # UX
-## User Stories
-## Features
+# User Stories
+# Features
 # Data model
-## Testing
-### Bugs
-### Remaining bugs
-### Validator Testing 
+# Testing
+# Bugs
+# Remaining bugs
+# Validator Testing 
 # Deployment
 
 PythonEssential  -  command-line application to analyse survey data for a CrossFit Café to help them with the healthy shake sales and predicting  the future sales, by YoannaLa
@@ -46,22 +46,29 @@ I wanted to create a useful application which makes life easier. I have created 
 I’ve decided to use and build on the walkthrough project idea and build on my CrossFit theme.
 The application calculated stock and advise on what to prepare for next week sales.
 
-### GitHub 
-* As the hosting software platform to accommodate remote location 
+I've also used the flow chart to understand what I need to to and what do I wnat to achive in this project:
 
-## Testing
-I have tested the code on PEP8 and it come out with those errors:
-	
-I have fixed the error as per instruction and run the code again 
-### Functionality testing
+<img src="flowChart.jpg">
 
-## Code Validation
+# Testing
+I have test the project by doing the following:
+    * passing code through a PEP8 and made the changes as per below
+    * Keep testing it in gippod in terminal by putting different data and checking the outcomes
+    * Testing in Code Institute Heroku terminal 
+
+    
+# Validation Testing 
+## I used PEP8
 I have tested the code on PEP8 and it come out with those errors:
 
 <img src="ErrorsPPE8.jpg">
 
-I have fixed the error as per instruction and run the code again 
+I have fixed the error as per instruction and run the code again.
 
+The few error's I couldn't fixed is the lines to long in my code. I couln'd work out how to combaine the rows and max values.
+
+## Bugs
+I had the usual  with whitelines 
 
 # Deployment
 ### This project was deployed on Heroku
@@ -81,6 +88,8 @@ iii.	Click “add”
 9.	Scrolled down and select “manually deploy”
 10.	After the “App was  successfully deployed”  clicked view to open the site in heroku
 11.	The deployed site can be found: https://crossfit-cafe.herokuapp.com/
+
+<img src="HerokuScreenShot.jpg">
 
 # Credits
 I have reached for help to my mentor and fellow students and couple of friends how are developers
