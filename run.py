@@ -132,13 +132,13 @@ def most_selling_product_last_4_weeks():
     if (max_value == detox_max):
         print('Detox is the most popular shake with: %i sold' % max_value)
     if (max_value == cleanser_max):
-        print('Cleanser is the most popular  shake with: %i sold' % max_value)
+        print('Cleanser is the most popular shake with: %i sold' % max_value)
     if (max_value == protein_max):
-        print('Protein is the most popular  shake with: %i sold' % max_value)
+        print('Protein is the most popular shake with: %i sold' % max_value)
     if (max_value == cherry_twist_max):
-        print('Cherry Twist is the most popular  shake with: %i sold' % max_value)
+        print('Cherry Twist is the most popular shake with: %i sold' % max_value)
     if (max_value == green_max):
-        print('Green is the most popular  shake this month with: %i sold' % max_value)
+        print('Green is the most popular shake this month with: %i sold' % max_value)
   
     return most_selling_product_last_4_weeks
 
