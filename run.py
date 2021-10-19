@@ -85,6 +85,10 @@ def calculate_surplus_data(sales_row):
 
 
 def get_max_value_from_list(sale_value_list):
+    """
+    Find the higest numbver in sales value.
+    """
+
     max = 0
     for sale_value in sale_value_list:
         number_value = int(sale_value)
@@ -99,7 +103,7 @@ def most_selling_product_last_4_weeks():
     """
     sales = SHEET.worksheet('Sales')
     most_selling_product_last_4_weeks = []
-    
+
     detox_column_last_4_weeks = sales.col_values(1)[-4:]
     cleanser_column_last_4_weeks = sales.col_values(2)[-4:]
     protein_column_last_4_weeks = sales.col_values(3)[-4:]
@@ -111,7 +115,7 @@ def most_selling_product_last_4_weeks():
     protein_max = get_max_value_from_list(protein_column_last_4_weeks)
     cherry_twist_max = get_max_value_from_list(cherry_twist_column_last_4_weeks)
     green_max = get_max_value_from_list(green_column_last_4_weeks)
-   
+
     max_value_list = [detox_max, cleanser_max, protein_max, cherry_twist_max, green_max]
     max_value = get_max_value_from_list(max_value_list)
 
