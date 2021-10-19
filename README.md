@@ -31,15 +31,19 @@ I wanted to create a useful application which makes life easier. I have created 
 <img src="ScreenShot1.jpg">
 
 
+
 4. if the date is put in correctly, (5 numbers separated by comma), the application updates and calculates the sales, surplus and stock on the external worksheet (google spreadsheet)
+
 <img src="ScreenShot2.jpg">
 
 
-5. Gives the use indication what was the biggest seller 
+5. Tells the user what was the most popluar buy
+
 <img src="ScreenShot3.jpg">
 
 
 6. last step is to advise on the amount of smoothies to be prepared for next week
+
 <img src="ScreenShot4.jpg">
 
 ## Data model
@@ -68,7 +72,7 @@ I have fixed the error as per instruction and run the code again.
 The few error's I couldn't fixed is the lines to long in my code. I couln'd work out how to combaine the rows and max values.
 
 ## Bugs
-I had the usual  with whitelines 
+I had removed all the whiespaces and added/removed spaces as per "problems taps in gitpod"
 
 # Deployment
 ### This project was deployed on Heroku
