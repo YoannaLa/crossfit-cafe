@@ -1,5 +1,13 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+PythonEssential - command-line application to analyse survey data for a CrossFit Café to help them with the healthy shake sales and predicting  the future sales, by YoannaLa
+
+## The deployed site can be find:
+https://crossfit-cafe.herokuapp.com/
+
+
+<img src="Responsive .jpg">
+
 Table of Contents
 # UX
 # User Stories
@@ -10,14 +18,6 @@ Table of Contents
 # Remaining bugs
 # Validator Testing 
 # Deployment
-
-PythonEssential - command-line application to analyse survey data for a CrossFit Café to help them with the healthy shake sales and predicting  the future sales, by YoannaLa
-
-## The deployed site can be find:
-https://crossfit-cafe.herokuapp.com/
-
-
-<img src="Responsive .jpg">
 
 # UX
 ## Website owner business goals
@@ -42,7 +42,7 @@ Analyse Survey Data application has the following features:
 
 <img src="ScreenShot3.jpg">
 
-* Last step, the application is advising on the amount of smoothies to be prepared for next week
+* Last step, the application is advising on the amount of smoothies to be prepared for next week - I made the shake to be capital letters and sepreat line to make it easier to read 
 
 <img src="ScreenShot4.jpg">
 
